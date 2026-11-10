@@ -2,7 +2,7 @@ from time import sleep
 
 import serial
 
-with serial.Serial("COM4", 115200, timeout=0.1, write_timeout=0.5) as bus:
+with serial.Serial("/dev/ttyUSB0", 115200, timeout=0.1, write_timeout=0.5) as bus:
     sleep(0.2)
     print("开始扫描，只读取位置。", flush=True)
     found = []
