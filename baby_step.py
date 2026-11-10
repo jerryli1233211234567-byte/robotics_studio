@@ -3,8 +3,8 @@ from time import sleep
 
 from pylx16a.lx16a import LX16A
 
-PORT = "COM4"  # 改成设备管理器里确认的端口
-SERVO_ID = 8
+PORT = "/dev/ttyUSB0"  # 改成设备管理器里确认的端口
+SERVO_ID = 1
 # 默认先试 1。如果已读出实际 ID，填实际值
 
 STEP_DEGREES = 20.0
