@@ -7,7 +7,7 @@ print("当前串口：")
 for port in ports:
     print(f"{port.device}: {port.description}")
 
-PORT = "COM4"
+PORT = "/dev/ttyUSB0"
 
 try:
     with serial.Serial(
