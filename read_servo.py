@@ -1,8 +1,8 @@
 import time
 import serial
 
-PORT = "COM4"
-SERVO_ID = 8
+PORT = "/dev/ttyUSB0"
+SERVO_ID = 1
 
 # 位置读取指令：ID、长度、命令
 body = [SERVO_ID, 3, 28]

@@ -34,7 +34,7 @@ def read_position(bus, servo_id):
     return None
 
 
-PORT = "COM4"
+PORT = "/dev/ttyUSB0"
 
 
 def configure_leg(leg_name, upper_id, lower_id):

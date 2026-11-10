@@ -4,7 +4,7 @@ import serial
 
 from servo_id_setup import PORT, send
 
-SERVO_ID = 8
+SERVO_ID = 1
 CENTER = 500  # 120 degrees
 TOLERANCE = 8  # About 1.9 degrees
 

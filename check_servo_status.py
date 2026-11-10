@@ -1,8 +1,8 @@
 import time
 import serial
 
-PORT = "COM4"
-SERVO_ID = 8
+PORT = "/dev/ttyUSB0"
+SERVO_ID = 1
 
 
 def read_status(bus, command, data_size):
