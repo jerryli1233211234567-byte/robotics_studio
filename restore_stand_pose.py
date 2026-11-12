@@ -7,25 +7,19 @@ from four_leg_baby_step import DEGREES_PER_UNIT, PORT, TOLERANCE, move, move_pha
 
 
 STAND_DEGREES = {
-    1: 111.60, 2: 130.08,
-    3: 119.52, 4: 120.96,
-    5: 112.32, 6: 119.76,
-    7: 111.84, 8: 127.44,
+    1: 111.60, 2: 100.08,
+    3: 119.52, 4: 90.96,
+    5: 112.32, 6: 89.76,
+    7: 111.84, 8: 157.44,
 }
-REAR_EXTENSION_UNITS = round(15 / DEGREES_PER_UNIT)
-REAR_EXTENSION_SIGNS = {6: -1, 8: 1}
 
 
 def main():
-    parser = ArgumentParser(description="恢复记录的站姿，或试验后腿伸展。")
-    parser.add_argument("--rear-extend", action="store_true", help="只让两条后腿的小腿从原站姿各伸展约 15°。")
-    args = parser.parse_args()
-    targets = {servo_id: round(degrees / DEGREES_PER_UNIT) for servo_id, degrees in STAND_DEGREES.items()}
-    if args.rear_extend:
-        targets = {
-            servo_id: targets[servo_id] + direction * REAR_EXTENSION_UNITS
-            for servo_id, direction in REAR_EXTENSION_SIGNS.items()
-        }
+    ArgumentParser(description="恢复四足机器人当前的默认站姿。").parse_args()
+    targets = {
+        servo_id: round(degrees / DEGREES_PER_UNIT)
+        for servo_id, degrees in STAND_DEGREES.items()
+    }
 
     with serial.Serial(PORT, 115200, timeout=0.15, write_timeout=0.5) as bus:
         sleep(0.2)
@@ -87,7 +81,7 @@ def main():
                     print(f"ID {servo_id} 无法发送停止指令。")
             raise
 
-    print("后腿伸展完成。" if args.rear_extend else "回站姿完成。")
+    print("回站姿完成。")
     print("舵机仍可能保持扭矩。")
 
 
